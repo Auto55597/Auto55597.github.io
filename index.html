@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer.AI | Enterprise AI Guardrails & SDK</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Early Access Banner -->
+    <div class="top-banner">
+        🚀 layer.AI is currently in <strong>Early Access / Pilot Program</strong>. API and features are subject to change.
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="layerai.png" alt="layer.AI Logo" class="nav-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#landing">Home</a></li>
+                <li><a href="#problem">Why layer.AI</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="mailto:layerai.contact@gmail.com" class="btn-primary">Get API Key</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Landing Page Section -->
+    <section id="landing" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Protect your AI Agents before they act.</h1>
+                <p class="hero-subtitle">
+                    The Managed Policy Engine for AI Agents. <br> Centralized permission control via SDK for agents interacting with tools, APIs, and databases.
+                </p>
+                <div class="hero-cta">
+                    <a href="#docs" class="btn-secondary">Explore SDK Docs</a>
+                    <a href="#getting-started" class="btn-link">Onboarding Process →</a>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Decision, Not Execution</h3>
+                    <p>layer.AI acts as a decision layer. We do not execute any actions; we simply respond with Allow or Deny.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Zero Maintenance</h3>
+                    <p>Managed Service: Clients don't need to write policy files or manually configure rules. We handle everything.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Safe by Design</h3>
+                    <p>We do not store business logic or tool call payloads. We only use action and resource names to make decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why layer.AI Section -->
+    <section id="problem" class="content-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why layer.AI?</h2>
+                <p>Ensuring safety in the autonomous era.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-item">
+                    <h4>The Autonomous Risk</h4>
+                    <p>AI Agents may perform unintended actions, such as deleting data or accessing confidential information without supervision.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Missing Guardrails</h4>
+                    <p>Standard tool-calling mechanisms lack a built-in security layer between the agent and your critical resources.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Complex Logic</h4>
+                    <p>Building custom permission logic is complex, time-consuming, and highly prone to security errors.</p>
+                </div>
+            </div>
+            <div class="solution-highlight">
+                <strong>layer.AI acts as a security interceptor layer that validates every action before it happens.</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="workflow-diagram">
+                <h3>System Architecture Overview</h3>
+                <div class="diagram-container">
+                    <div class="node">AI Agent (Tool Call)</div>
+                    <div class="arrow">→</div>
+                    <div class="node highlight">layer.AI SDK (.check)</div>
+                    <div class="arrow">→</div>
+                    <div class="node">Policy Engine (Cloud)</div>
+                    <div class="arrow">→</div>
+                    <div class="node">Allow / Deny</div>
+                    <div class="arrow">→</div>
+                    <div class="node">Agent Executes / Halts</div>
+                </div>
+                <div class="info-box mt-2">
+                    <p>Note: layer.AI does not execute actions. It provides decisions only.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Documentation Section -->
+    <section id="docs" class="docs-section">
+        <div class="container docs-container">
+            <!-- Sidebar -->
+            <aside class="docs-sidebar">
+                <div class="sidebar-group">
+                    <h4>Introduction</h4>
+                    <a href="#overview">Overview</a>
+                    <a href="#getting-started">Getting Started</a>
+                </div>
+                <div class="sidebar-group">
+                    <h4>Integration</h4>
+                    <a href="#installation">Installation</a>
+                    <a href="#quick-start">Quick Start</a>
+                    <a href="#permissions">How Permissions Work</a>
+                </div>
+                <div class="sidebar-group">
+                    <h4>Reliability</h4>
+                    <a href="#error-handling">Error Handling</a>
+                    <a href="#safety-note">Safety & Reliability</a>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <main class="docs-content">
+                <article id="overview">
+                    <h2>Overview</h2>
+                    <p>layer.AI is the centralized decision layer for AI security. By integrating our SDK, your agents are protected by a managed policy engine that evaluates every tool call against your predefined safety rules.</p>
+                </article>
+
+                <article id="getting-started">
+                    <h2>Getting Started (Before Coding)</h2>
+                    <p>Our onboarding process is designed to be seamless. No manual configuration required from your side.</p>
+
+                    <div class="onboarding-steps">
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <div>
+                                <strong>Contact Us:</strong> Contact the layer.AI team to start your Pilot or Early Access program.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <div>
+                                <strong>Submit Information:</strong>
+                                <ul class="step-list">
+                                    <li>Email and Owner details</li>
+                                    <li>Agent Name</li>
+                                    <li>A list of <strong>Actions</strong> and <strong>Resources</strong> the agent will use.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <div>
+                                <strong>Receive Credentials:</strong> We provide your <strong>API Key</strong> and <strong>Agent ID</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-card danger">
+                        <h4>Managed Service</h4>
+                        <p>Clients do <strong>NOT</strong> need to use Swagger UI, create their own policies, or configure rules. The layer.AI team configures all policies for you based on our agreement.</p>
+                    </div>
+                </article>
+
+                <article id="installation">
+                    <h2>Installation</h2>
+                    <p>The layer.AI SDK is currently available for Python via pip:</p>
+                    <div class="code-block">
+                        <button class="copy-btn">Copy</button>
+                        <pre><code>pip install layer-ai-sdk</code></pre>
+                    </div>
+                </article>
+
+                <article id="quick-start">
+                    <h2>Quick Start (SDK Usage)</h2>
+                    <p>You must call <code>.check()</code> before executing any real action within your agent's tool-calling logic:</p>
+                    <div class="code-block">
+                        <div class="code-header">python</div>
+                        <button class="copy-btn">Copy</button>
+                        <pre><code>from sdk import AgentGuard
+
+API_KEY = "YOUR_API_KEY"
+AGENT_ID = "YOUR_AGENT_ID"
+BASE_URL = "http://web/api"
+
+guard = AgentGuard(
+    api_key=API_KEY,
+    agent_id=AGENT_ID,
+    base_url=BASE_URL
+)
+
+guard.check(action="xxxxxxx", resource="xxxxxxxx")</code></pre>
+                    </div>
+                </article>
+
+                <article id="permissions">
+                    <h2>How Permissions Work</h2>
+                    <ul>
+                        <li><strong>Action:</strong> What the agent intends to do (e.g., <code>send_email</code>).</li>
+                        <li><strong>Resource:</strong> The target being acted upon (e.g., <code>internal_mailing_list</code>).</li>
+                        <li>Policies are evaluated in <strong>real-time</strong> on the cloud.</li>
+                        <li>Policies are managed <strong>centrally</strong> by layer.AI as a managed service.</li>
+                    </ul>
+                </article>
+
+                <article id="error-handling">
+                    <h2>Error Handling</h2>
+                    <p>layer.AI provides the decision, but the flow control remains in your hands:</p>
+                    <div class="code-block">
+                        <pre><code>try:
+    guard.check(action="api_call", resource="external_service")
+except PermissionError:
+    # Explicitly blocked by Policy
+    handle_blocked_flow()
+except ConnectionError:
+    # Network issue: Decide whether to retry or fail-safe
+    retry_check()
+except ValueError:
+    # Invalid configuration (Check API Key or Agent ID)
+    alert_admin("Invalid configuration")</code></pre>
+                    </div>
+                </article>
+
+                <article id="safety-note">
+                    <h2>Reliability & Safety Note</h2>
+                    <p>layer.AI is strictly a <strong>Decision Layer</strong>:</p>
+                    <ul>
+                        <li><strong>No Tool Execution:</strong> We do not execute actions on your behalf.</li>
+                        <li><strong>Privacy:</strong> We do not store business payloads or sensitive content from your tool calls.</li>
+                        <li><strong>Ideal For:</strong> MVPs, internal tools, and pilot programs during the Early Access phase.</li>
+                    </ul>
+                </article>
+            </main>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 layer.AI - Secure AI Infrastructure. All rights reserved.</p>
+            <p class="text-xs">Early Access / Pilot Program</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
