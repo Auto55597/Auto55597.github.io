@@ -36,7 +36,8 @@
     <section id="landing" class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1>Protect your AI Agents before they act.</h1>
+                <h1>Protect your AI Agents before they execute actions.
+                </h1>
                 <p class="hero-subtitle">
                     The Managed Policy Engine for AI Agents. <br> Centralized permission control via SDK for agents interacting with tools, APIs, and databases.
                 </p>
@@ -57,7 +58,8 @@
                 </div>
                 <div class="feature-card">
                     <h3>Safe by Design</h3>
-                    <p>We do not store business logic or tool call payloads. We only use action and resource names to make decisions.</p>
+                    <p>We do not store business logic or full tool call payloads. Decisions are primarily based on action and resource identifiers.
+                    </p>
                 </div>
             </div>
         </div>
@@ -104,7 +106,7 @@
                     <div class="arrow">→</div>
                     <div class="node">Allow / Deny</div>
                     <div class="arrow">→</div>
-                    <div class="node">Agent Executes / Halts</div>
+                    <div class="node">Agent Executes or Halts</div>
                 </div>
                 <div class="info-box mt-2">
                     <p>Note: layer.AI does not execute actions. It provides decisions only.</p>
@@ -127,7 +129,6 @@
                 </div>
                 <div class="sidebar-group">
                     <h4>Integration</h4>
-                    <a href="#installation">Installation</a>
                     <a href="#quick-start">Quick Start</a>
                     <a href="#permissions">How Permissions Work</a>
                 </div>
@@ -142,12 +143,13 @@
             <main class="docs-content">
                 <article id="overview">
                     <h2>Overview</h2>
-                    <p>layer.AI is the centralized decision layer for AI security. By integrating our SDK, your agents are protected by a managed policy engine that evaluates every tool call against your predefined safety rules.</p>
+                    <p>layer.AI is the centralized decision layer for AI security. By integrating our SDK, your agents are protected by a managed policy engine that evaluates tool calls against centrally managed safety rules
+                    </p>
                 </article>
 
                 <article id="getting-started">
                     <h2>Getting Started (Before Coding)</h2>
-                    <p>Our onboarding process is designed to be seamless. No manual configuration required from your side.</p>
+                    <p>Our onboarding process is designed to be seamless. </p>
 
                     <div class="onboarding-steps">
                         <div class="step">
@@ -181,34 +183,52 @@
                     </div>
                 </article>
 
-                <article id="installation">
-                    <h2>Installation</h2>
-                    <p>The layer.AI SDK is currently available for Python via pip:</p>
-                    <div class="code-block">
-                        <button class="copy-btn">Copy</button>
-                        <pre><code>pip install layer-ai-sdk</code></pre>
-                    </div>
-                </article>
-
                 <article id="quick-start">
                     <h2>Quick Start (SDK Usage)</h2>
                     <p>You must call <code>.check()</code> before executing any real action within your agent's tool-calling logic:</p>
                     <div class="code-block">
                         <div class="code-header">python</div>
                         <button class="copy-btn">Copy</button>
-                        <pre><code>from sdk import AgentGuard
+                        <pre><code>import requests
 
-API_KEY = "YOUR_API_KEY"
-AGENT_ID = "YOUR_AGENT_ID"
-BASE_URL = "http://web/api"
+API_BASE_URL = "https://layer-ai-api-production.up.railway.app"
+API_KEY = "API_KEY_HERE"
 
-guard = AgentGuard(
-    api_key=API_KEY,
-    agent_id=AGENT_ID,
-    base_url=BASE_URL
-)
+def layerai_request(agent_id: str, action: str, resource: str, content: str):
+    payload = {
+        "agent_id": agent_id,
+        "action": action,
+        "resource": resource,
+        "content": content
+    }
 
-guard.check(action="xxxxxxx", resource="xxxxxxxx")</code></pre>
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    res = requests.post(
+        f"{API_BASE_URL}/api/agent/request",
+        json=payload,
+        headers=headers,
+        timeout=10
+    )
+
+    res.raise_for_status()
+    return res.json()
+
+
+# ===== TEST =====
+if __name__ == "__main__":
+    result = layerai_request(
+        agent_id="agent_id_here",
+        action="action_test",
+        resource="resource_test",
+        content="test content"
+    )
+
+    print(result)
+</code></pre>
                     </div>
                 </article>
 
@@ -227,7 +247,7 @@ guard.check(action="xxxxxxx", resource="xxxxxxxx")</code></pre>
                     <p>layer.AI provides the decision, but the flow control remains in your hands:</p>
                     <div class="code-block">
                         <pre><code>try:
-    guard.check(action="api_call", resource="external_service")
+    layerai_request(agent_id="agent_id_here", action="api_call", resource="external_service")
 except PermissionError:
     # Explicitly blocked by Policy
     handle_blocked_flow()
@@ -245,7 +265,7 @@ except ValueError:
                     <p>layer.AI is strictly a <strong>Decision Layer</strong>:</p>
                     <ul>
                         <li><strong>No Tool Execution:</strong> We do not execute actions on your behalf.</li>
-                        <li><strong>Privacy:</strong> We do not store business payloads or sensitive content from your tool calls.</li>
+                        <li><strong>Privacy:</strong> We do not persist business payloads or sensitive content from your tool calls.</li>
                         <li><strong>Ideal For:</strong> MVPs, internal tools, and pilot programs during the Early Access phase.</li>
                     </ul>
                 </article>
@@ -262,5 +282,7 @@ except ValueError:
 
     <script src="main.js"></script>
 </body>
+
+</html>
 
 </html>
